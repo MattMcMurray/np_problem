@@ -19,6 +19,14 @@ class TestGenerateSolution(unittest.TestCase):
 
           self.assertEqual(len(res), s.avail_spots, "Failed with seed: {}".format(seed))
 
+    def test_same_student_not_paired_with_itself(self):
+      for seed in range(100):
+        s = Solution(seed)
+        res = s.generate_soltn()
+
+        for pair in res:
+          self.assertNotEqual(pair[0], pair[1], "A student was paired with themself. Random seed: {}".format(seed))
+
     def test_no_duplicate_students(self):
       for seed in range(100):
         s = Solution(seed)
