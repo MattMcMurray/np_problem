@@ -46,6 +46,9 @@ class Solution():
     def avail_spots(self):
       return self.AVAIL_SPOTS
 
+    def get_exclusions(self):
+      return self.exclusions
+
     def generate_soltn(self):
         random.seed(self.random_seed)
 

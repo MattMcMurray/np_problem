@@ -37,6 +37,16 @@ class TestGenerateSolution(unittest.TestCase):
         dups = has_duplicates(flattened_res)
         self.assertFalse(dups, "Result list has a duplicate. Random seed: {}".format(seed))
 
+    def test_no_excluded_tuples_in_solution(self):
+      for seed in range(100):
+        s = Solution(seed)
+        res = s.generate_soltn()
+
+        exclusions = s.get_exclusions()
+
+        for pair in res:
+          self.assertNotIn(pair, exclusions, "An excluded pair was included in the solution. Random seed: {}".format(seed))
+
 
 
 if __name__ == '__main__':
